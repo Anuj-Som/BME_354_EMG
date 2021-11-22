@@ -83,27 +83,6 @@ def generate_master_csv(fileName, training, testing, fourierMode):
     return train_df, test_df
 
 
-def merge_df():
-    # Merge SB and Down datasets on 'label' col
-
-    testpath_SB = "./data/" + "SB" + "_test.csv"
-    trainpath_SB = "./data/" + "SB" + "_train.csv"
-    train_df_SB = pd.read_csv(testpath_SB)
-    test_df_SB = pd.read_csv(trainpath_SB)
-
-    testpath_D = "./data/" + "Down" + "_test.csv"
-    trainpath_D = "./data/" + "Down" + "_train.csv"
-    train_df_D = pd.read_csv(testpath_D)
-    test_df_D = pd.read_csv(trainpath_D)
-
-    testpath_save = "./data/" + "test_data.csv"
-    trainpath_save = "./data/" + "train_data.csv"
-    test_csv = None
-    train_csv = None
-    test_csv.to_csv(testpath_save, index=False)
-    train_csv.to_csv(trainpath_save, index=False)
-
-
 if __name__ == "__main__":
     # Designate percent split of training/testing, fileName as ["SB", "Down"]
     train_nos, test_nos = randomize_test_training(0.8)
