@@ -32,7 +32,7 @@ def butter_lowpass_filter(data):
     # Butterworth Filter requirements.
     T = 1.0         # Sample Period
     fs = 50000       # sample rate, Hz
-    cutoff = 25     # desired cutoff frequency of the filter, Hz ,      slightly higher than actual 1.2 Hz
+    cutoff = 25     # desired cutoff frequency of the filter, Hz, slightly higher than actual 1.2 Hz
     nyq = 0.5 * fs  # Nyquist Frequency
     order = 2       # sin wave can be approx represented as quadratic
     n = int(T * fs)-1 # total number of samples
@@ -50,13 +50,19 @@ def butter_lowpass_filter(data):
 
 def graph_fft(df):
     voltage_data = df['voltage']
+    no_to_show = 250    # Toggle highest frequency shown
 
     T = 1/50000
     yf = np.fft.fft(voltage_data)
     N = len(voltage_data)
     xf = np.fft.fftfreq(N, T)[:N//2]
 
-    plt.plot(xf[0:500], (2.0/N * np.abs(yf[0:N//2])[0:500]))
+    plt.plot(xf[0:no_to_show], (2.0/N * np.abs(yf[0:N//2])[0:no_to_show]))
+    plt.grid()
+
+    plt.title('Raw FFT signal data')
+    plt.xlabel('Frequency (Hz)')
+    plt.ylabel('Magnitude')
     plt.grid()
     plt.show()
 
@@ -103,7 +109,8 @@ def main(file_path, file_type, file_name):
 
 if __name__ == "__main__":
     # Add new .lvm file in path ./incoming_data/lvm
+    print("Make sure saved lvm file is stored within incoming_data/lvm/")
     file_path = "./incoming_data"
     file_type = "lvm"
-    filename = "SB_4"
+    filename = input("Please input the filename as saved in the folder (no .lvm): ")
     main(file_path, file_type, filename)
