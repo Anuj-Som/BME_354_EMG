@@ -4,9 +4,9 @@ Anuj Som &amp; Sara Min BME 354 Final Project files &amp;
 ## Summary of Specficiation Testing/Project Functionality Assessment:
 
 Gain: 950,000
-Output Voltage amplitude range:  ±.2 V
-Bandwidth: 10.6-513 Hz
-Relavent Frequency content range: 0 Hz - 500 Hz
+| Output Voltage amplitude range:  ±.2 V
+| Bandwidth: 10.6-513 Hz
+| Relavent Frequency content range: 0 Hz - 500 Hz
 
 Accuracy in distinguishing between ‘down’ and ‘space bar’
 - The device is able to distinguish between Anuj saying the words ‘down’ and ‘space bar’ with 95% accuracy, provided that the entire phrase is said within 1.5 seconds, the user is calm (no swallowing, hiccups, movement besides speaking).
