@@ -62,7 +62,7 @@ def generate_master_csv(fileName, training, testing, fourierMode):
         
         # Append data to master dataframe
         train_df[str(count)] = raw_df['voltage']
-    # train_df['label'] = pd.Series([fileName for i in range(len(train_df)+1)])
+    train_df['label'] = pd.Series([fileName for i in range(len(train_df)+1)])
     
     # Repeat for testing dataframe
     test_df = pd.DataFrame()
@@ -78,16 +78,40 @@ def generate_master_csv(fileName, training, testing, fourierMode):
         
         # Append data to master dataframe
         test_df[str(count)] = raw_df['voltage']
-    # test_df['label'] = pd.Series([fileName for i in range(len(test_df)+1)])
+    test_df['label'] = pd.Series([fileName for i in range(len(test_df)+1)])
 
     return train_df, test_df
+
+
+def merge_df():
+    # Merge SB and Down datasets on 'label' col
+
+    testpath_SB = "./data/" + "SB" + "_test.csv"
+    trainpath_SB = "./data/" + "SB" + "_train.csv"
+    train_df_SB = pd.read_csv(testpath_SB)
+    test_df_SB = pd.read_csv(trainpath_SB)
+
+    testpath_D = "./data/" + "Down" + "_test.csv"
+    trainpath_D = "./data/" + "Down" + "_train.csv"
+    train_df_D = pd.read_csv(testpath_D)
+    test_df_D = pd.read_csv(trainpath_D)
+
+    testpath_save = "./data/" + "test_data.csv"
+    trainpath_save = "./data/" + "train_data.csv"
+    test_csv = None
+    train_csv = None
+    test_csv.to_csv(testpath_save, index=False)
+    train_csv.to_csv(trainpath_save, index=False)
+
 
 if __name__ == "__main__":
     # Designate percent split of training/testing, fileName as ["SB", "Down"]
     train_nos, test_nos = randomize_test_training(0.8)
-    fileName = "Down"
+    fileName = "SB"
 
     clean_csv(fileName)
     master_train_df, master_test_df = generate_master_csv(fileName, train_nos, test_nos, True)
-    save_df_as_csv(fileName, master_train_df, master_test_df)
+    save_df_as_csv(fileName, master_test_df, master_train_df)
+
+    # merge_df(master_train_df, master_test_df)
     
