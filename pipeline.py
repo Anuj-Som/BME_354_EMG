@@ -87,7 +87,7 @@ def graph_voltage(df):
     plt.show()
 
 def main(file_path, file_type, file_name):
-    filename = "trained_model.sav"
+    filename = "fourier_trained_model.sav"
     loaded_model = pickle.load(open(filename, 'rb'))
 
     process_lvm_to_csv(file_path, file_type, file_name)
