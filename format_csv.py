@@ -85,11 +85,11 @@ def generate_master_csv(fileName, training, testing, fourierMode):
 
 if __name__ == "__main__":
     # Designate percent split of training/testing, fileName as ["SB", "Down", "BN"]
-    train_nos, test_nos = randomize_test_training(0.8, 75)
-    fileName = "BN"
+    train_nos, test_nos = randomize_test_training(0.8, 250)
+    fileName = "SB"
 
     clean_csv(fileName)
-    master_train_df, master_test_df = generate_master_csv(fileName, train_nos, test_nos, False)
+    master_train_df, master_test_df = generate_master_csv(fileName, train_nos, test_nos, True)
     save_df_as_csv(fileName, master_test_df, master_train_df)
 
     # merge_df(master_train_df, master_test_df)
