@@ -2,9 +2,6 @@ numpy
 scipy
 matplotlib
 pandas
-# torch
-# torchvision
-# torchaudio
 sklearn
 scipy
 pickle-mixin

@@ -15,7 +15,7 @@ def randomize_test_training(split, n):
 
 def clean_csv(fileName):
     # If filename not "SB" or "Down" throw error
-    assert fileName in ["SB", "Down"]
+    assert fileName in ["SB", "Down", "BN"]
 
     # Clear existing master CSVs
     testpath = "./master_data/" + fileName + "_test.csv"
@@ -26,7 +26,7 @@ def clean_csv(fileName):
 
 def save_df_as_csv(fileName, test_csv, train_csv):
     # If filename not "SB" or "Down" throw error
-    assert fileName in ["SB", "Down"]
+    assert fileName in ["SB", "Down", "BN"]
 
     # Clear existing master CSVs
     testpath = "./master_data/" + fileName + "_test.csv"
@@ -37,7 +37,7 @@ def save_df_as_csv(fileName, test_csv, train_csv):
 
 def generate_master_csv(fileName, training, testing, fourierMode):
     # If filename not "SB" or "Down" throw error
-    assert fileName in ["SB", "Down"]
+    assert fileName in ["SB", "Down", "BN"]
 
     # Clear existing master CSVs
     testpath = "./master_data/" + fileName + "_test.csv"
@@ -52,7 +52,7 @@ def generate_master_csv(fileName, training, testing, fourierMode):
     train_df = pd.DataFrame()
     for count, number in enumerate(training):
         # Get raw data from csv file
-        train_path = data_path + "_" + str(number) + ".csv"
+        train_path = data_path + str(number) + ".csv"
         raw_df = pd.read_csv(train_path, names=["time", "voltage"])
 
         # If fourierMode is on, voltage data will be inputted to master CSV
@@ -68,7 +68,7 @@ def generate_master_csv(fileName, training, testing, fourierMode):
     test_df = pd.DataFrame()
     for count, number in enumerate(testing):
         # Get raw data from csv file
-        test_path = data_path + "_" + str(number) + ".csv"
+        test_path = data_path + str(number) + ".csv"
         raw_df = pd.read_csv(test_path, names=["time", "voltage"])
 
         # If fourierMode is on, voltage data will be inputted to master CSV
@@ -84,8 +84,8 @@ def generate_master_csv(fileName, training, testing, fourierMode):
 
 
 if __name__ == "__main__":
-    # Designate percent split of training/testing, fileName as ["SB", "Down"]
-    train_nos, test_nos = randomize_test_training(0.8, 50)
+    # Designate percent split of training/testing, fileName as ["SB", "Down", "BN"]
+    train_nos, test_nos = randomize_test_training(0.8, 250)
     fileName = "SB"
 
     clean_csv(fileName)
