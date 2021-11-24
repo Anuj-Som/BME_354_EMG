@@ -5,10 +5,10 @@ from sklearn.neural_network import MLPClassifier
 import pickle
 
 # Data processing & Wrangling to np arrays
-SB_train_data = "./data/SB_train.csv"
-SB_test_data = "./data/SB_test.csv"
-Down_train_data = "./data/Down_train.csv"
-Down_test_data = "./data/Down_test.csv"
+SB_train_data = "./master_data/SB_train.csv"
+SB_test_data = "./master_data/SB_test.csv"
+Down_train_data = "./master_data/Down_train.csv"
+Down_test_data = "./master_data/Down_test.csv"
 
 def process_data(dataframe, label):
     # Let Label "0" be "SB", "1" be "Down"

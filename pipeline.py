@@ -103,6 +103,7 @@ def main(file_path, file_type, file_name):
     eval = characterize_dict[str(int(prediction))]
     print("The data is {}".format(eval))
 
+
     graph_voltage(data_df)
     graph_fft(data_df)
 

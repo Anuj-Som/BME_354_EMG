@@ -4,11 +4,11 @@ import numpy as np
 # from torchvision.io import read_image
 
 
-def randomize_test_training(split):
+def randomize_test_training(split, n):
     # Contingent on data being in training_data_csv
-    # Numbered from 1 to 50
-    fifty_nums = [i for i in range(1, 51)]
-    training = np.random.choice(50, int(50*split), replace=False)+1
+    # Numbered from 1 to n
+    fifty_nums = [i for i in range(1, n+1)]
+    training = np.random.choice(n, int(n*split), replace=False)+1
     testing = [item for item in fifty_nums if item not in training]
     return training, testing
 
@@ -18,8 +18,8 @@ def clean_csv(fileName):
     assert fileName in ["SB", "Down"]
 
     # Clear existing master CSVs
-    testpath = "./data/" + fileName + "_test.csv"
-    trainpath = "./data/" + fileName + "_train.csv"
+    testpath = "./master_data/" + fileName + "_test.csv"
+    trainpath = "./master_data/" + fileName + "_train.csv"
     open(testpath, 'w').close()
     open(trainpath, 'w').close()
 
@@ -29,8 +29,8 @@ def save_df_as_csv(fileName, test_csv, train_csv):
     assert fileName in ["SB", "Down"]
 
     # Clear existing master CSVs
-    testpath = "./data/" + fileName + "_test.csv"
-    trainpath = "./data/" + fileName + "_train.csv"
+    testpath = "./master_data/" + fileName + "_test.csv"
+    trainpath = "./master_data/" + fileName + "_train.csv"
     test_csv.to_csv(testpath, index=False)
     train_csv.to_csv(trainpath, index=False)
 
@@ -40,8 +40,8 @@ def generate_master_csv(fileName, training, testing, fourierMode):
     assert fileName in ["SB", "Down"]
 
     # Clear existing master CSVs
-    testpath = "./data/" + fileName + "_test.csv"
-    trainpath = "./data/" + fileName + "_train.csv"
+    testpath = "./master_data/" + fileName + "_test.csv"
+    trainpath = "./master_data/" + fileName + "_train.csv"
     open(testpath, 'w').close()
     open(trainpath, 'w').close()
 
@@ -85,11 +85,11 @@ def generate_master_csv(fileName, training, testing, fourierMode):
 
 if __name__ == "__main__":
     # Designate percent split of training/testing, fileName as ["SB", "Down"]
-    train_nos, test_nos = randomize_test_training(0.8)
-    fileName = "SB"
+    train_nos, test_nos = randomize_test_training(0.8, 50)
+    fileName = "Down"
 
     clean_csv(fileName)
-    master_train_df, master_test_df = generate_master_csv(fileName, train_nos, test_nos, True)
+    master_train_df, master_test_df = generate_master_csv(fileName, train_nos, test_nos, False)
     save_df_as_csv(fileName, master_test_df, master_train_df)
 
     # merge_df(master_train_df, master_test_df)
