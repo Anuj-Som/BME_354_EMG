@@ -9,13 +9,13 @@ SB_train_data = "./master_data/SB_train.csv"
 SB_test_data = "./master_data/SB_test.csv"
 Down_train_data = "./master_data/Down_train.csv"
 Down_test_data = "./master_data/Down_test.csv"
-Noise_train_data = "./master_data/Noise_train.csv"
-Noise_test_data = "./master_data/Noise_test.csv"
+BN_train_data = "./master_data/BN_train.csv"
+BN_test_data = "./master_data/BN_test.csv"
 
 def process_data(dataframe, label):
     # Let Label "0" be "SB", "1" be "Down"
     X = dataframe.drop(columns=["label"]).T.to_numpy()
-    labelDict = {"SB": 0.0, "Down": 1.0, "Noise": 2.0}
+    labelDict = {"SB": 0.0, "Down": 1.0, "BN": 2.0}
     assert label in labelDict.keys()
     y = [labelDict[label] for i in range(len(X))]
     return X, y
@@ -32,18 +32,18 @@ Down_train_X, Down_train_y = process_data(Down_train_df, "Down")
 Down_test_df = pd.read_csv(Down_test_data)
 Down_test_X, Down_test_y = process_data(Down_test_df, "Down")
 
-Noise_train_df = pd.read_csv(Noise_train_data)
-Noise_train_X, Noise_train_y = process_data(Noise_train_df, "Noise")
+BN_train_df = pd.read_csv(BN_train_data)
+BN_train_X, BN_train_y = process_data(BN_train_df, "BN")
 
-Noise_test_df = pd.read_csv(Noise_test_data)
-Noise_test_X, Noise_test_y = process_data(Noise_test_df, "Noise")
+BN_test_df = pd.read_csv(BN_test_data)
+BN_test_X, BN_test_y = process_data(BN_test_df, "BN")
 
-train_X = np.concatenate((SB_train_X, Down_train_X, Noise_train_X), axis=0)
-test_X = np.concatenate((SB_test_X, Down_test_X, Noise_test_X), axis=0)
+train_X = np.concatenate((SB_train_X, Down_train_X, BN_train_X), axis=0)
+test_X = np.concatenate((SB_test_X, Down_test_X, BN_test_X), axis=0)
 # print(X)
 # print(np.shape(X))
 
-train_y = np.concatenate((SB_train_y, Down_train_y, Noise_train_y), axis=0)
-test_y = np.concatenate((SB_test_y, Down_test_y, Noise_test_y), axis=0)
+train_y = np.concatenate((SB_train_y, Down_train_y, BN_train_y), axis=0)
+test_y = np.concatenate((SB_test_y, Down_test_y, BN_test_y), axis=0)
 # print(y)
 # print(np.shape(y))
