@@ -9,7 +9,7 @@ from data_wrangle import test_X, test_y, train_X, train_y
 all_X = np.concatenate((test_X, train_X), axis=0)
 all_y = np.concatenate((test_y, train_y), axis=0)
 
-filename = "trained_model.sav"
+filename = "fourier_trained_model.sav"
 loaded_model = pickle.load(open(filename, 'rb'))
 
 print("Over all data: n={}".format(len(all_X)))

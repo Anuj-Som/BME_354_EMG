@@ -97,7 +97,7 @@ def main(file_path, file_type, file_name):
     fft_data = np.abs(np.fft.fft(data_df['voltage']))
     print(np.shape(fft_data))
 
-    characterize_dict = {"0": "SB", "1": "Down"}
+    characterize_dict = {"0": "SB", "1": "Down", "2": "Background Noise"}
     prediction = loaded_model.predict([fft_data])
     # print(prediction)
     eval = characterize_dict[str(int(prediction))]
