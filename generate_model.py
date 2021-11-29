@@ -2,15 +2,15 @@
 # Uses scikit learn Multilayer Perceptron machine learning model to classify using data
 # https://scikit-learn.org/stable/modules/neural_networks_supervised.html
 
-
 from sklearn.neural_network import MLPClassifier 
 import pickle
 from data_wrangle import main
 
-testType = "fourier"            # either "ourier", "fourierdb", or "voltage"
+testType = "voltage"            # either "fourier", "fourierdb", or "voltage"
 print("Starting training")
-clf = MLPClassifier(solver='lbfgs', alpha=1e-7,     # Define hyperparameters
+clf = MLPClassifier(solver='adam', alpha=1e-5,     # Define hyperparameters
                     hidden_layer_sizes=(150, 50))
+# solver='lbfgs'
 
 train_X, train_y, test_X, test_y = main(testType)
 trained = clf.fit(train_X, train_y)
