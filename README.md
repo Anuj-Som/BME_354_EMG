@@ -46,7 +46,7 @@ The filename.lvm file will automatically be processed, converted into a FFT magn
 
 ## Processing Methodology
 
-This project utilizes a sklearn.neural_network MLPClassifier Multilayer Perceptron network saved within the trained_model.sav pickle file. The network accepts an array of 74,999 numpy float64 (intended to be EMG signal fourier magnitude data), passes it through hidden layer 1 with 100 hidden perceptrons, then hidden layer 2 with 25 hidden perceptrons, then finally characterizes into 2 output perceptrons, either 0 ("SB") or 1 ("Down"). 
+This project utilizes a sklearn.neural_network MLPClassifier Multilayer Perceptron network saved within the trained_model.sav pickle file. The network accepts an array of 14,999 numpy float64 (intended to be EMG signal fourier magnitude data), passes it through hidden layer 1 with 150 hidden perceptrons, then hidden layer 2 with 50 hidden perceptrons, then finally characterizes into 2 output perceptrons, either 0 ("SB") or 1 ("Down"). 
 
 To generate a new model based on updated data, refer to generate_model.py. This defaults to using the first 50 saved csv files in master_data csvs for each characterization, so tweak the code in format_csv.py which generates the master_csv files as needed. To see how to read the model from the pickle file, see lines 11-12 in characterize.py. Running characterize.py will run the model on the entire dataset and the specified test dataset and return the percentage of the inputs it labeled correctly. 
 
