@@ -1,0 +1,12 @@
+Confusion matrices on testing data:
+0 = SB
+1 = Down
+2 = Noise
+
+Over test data: n=115
+Accuracy: 0.9304347826086956
+[[47  3  0]
+ [ 1 49  0]
+ [ 2  2 11]]
+
+
