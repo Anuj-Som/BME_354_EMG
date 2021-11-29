@@ -99,8 +99,8 @@ def main(fileName, num, FourierMode, DBMode):
     # merge_df(master_train_df, master_test_df)
 
 if __name__ == "__main__":
-    FourierMode = True
-    DBMode = True
+    FourierMode = False
+    DBMode = False
     fileNames = ["SB", "Down", "BN"]
     Nums = [250, 250, 75]
     for i in range(len(fileNames)):
