@@ -151,4 +151,84 @@ Accuracy: 0.6363636363636364
 
 
 Sara Special Tests
+On fourier model:
+Over Sara/DeepDown test data: n=15
+Accuracy: 0.06666666666666667
+[[ 1 14]
+ [ 0  0]]
 
+
+Over Sara/DeepSB test data: n=15
+Accuracy: 0.0
+[[ 0 15]
+ [ 0  0]]
+
+
+Over Sara/Down test data: n=30
+Accuracy: 0.06666666666666667
+[[ 0  0  0]
+ [12  2 16]
+ [ 0  0  0]]
+
+
+Over Sara/SB test data: n=30
+Accuracy: 0.13333333333333333
+[[ 4 26]
+ [ 0  0]]
+
+
+Sara test on fourierdb model:
+Over Sara/DeepDown test data: n=15
+Accuracy: 0.8666666666666667
+[[ 0  0  0]
+ [ 1 13  1]
+ [ 0  0  0]]
+
+
+Over Sara/DeepSB test data: n=15
+Accuracy: 0.0
+[[ 0 11  4]
+ [ 0  0  0]
+ [ 0  0  0]]
+
+
+Over Sara/Down test data: n=30
+Accuracy: 0.36666666666666664
+[[ 0  0  0]
+ [13 11  6]
+ [ 0  0  0]]
+
+
+Over Sara/SB test data: n=30
+Accuracy: 0.0
+[[ 0 12 18]
+ [ 0  0  0]
+ [ 0  0  0]]
+
+ 
+Sara special tests on voltage model:
+Over Sara/DeepDown test data: n=15
+Accuracy: 0.13333333333333333
+[[ 0  0]
+ [13  2]]
+
+
+Over Sara/DeepSB test data: n=15
+Accuracy: 0.2
+[[3 9 3]
+ [0 0 0]
+ [0 0 0]]
+
+
+Over Sara/Down test data: n=30
+Accuracy: 0.3
+[[ 0  0  0]
+ [19  9  2]
+ [ 0  0  0]]
+
+
+Over Sara/SB test data: n=30
+Accuracy: 0.36666666666666664
+[[11 16  3]
+ [ 0  0  0]
+ [ 0  0  0]]
