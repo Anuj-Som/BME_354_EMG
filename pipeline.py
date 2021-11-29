@@ -116,5 +116,3 @@ if __name__ == "__main__":
     filename = input("Please input the filename as saved in the folder (no .lvm): ")
     main(file_path, file_type, filename)
 
-
-    alternate code
