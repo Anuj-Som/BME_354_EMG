@@ -4,10 +4,11 @@ import matplotlib.pyplot as plt
 from sklearn.neural_network import MLPClassifier 
 import pickle
 from scipy.signal import butter, filtfilt
+import sklearn
 
 
 def process_lvm_to_csv(file_path, file_type, file_name):
-    file_dir = "{}/{}/{}.{}".format(file_path, file_type, file_name, file_type)
+    file_dir = "{}/{}.{}".format(file_path, file_name, file_type)
     save_dir = "{}/csv/{}.csv".format(file_path, file_name)
 
     f = open(file_dir)
@@ -87,34 +88,66 @@ def graph_voltage(df):
     plt.show()
 
 def main(file_path, file_type, file_name):
-    filename = "fourier_trained_model.sav"
-    loaded_model = pickle.load(open(filename, 'rb'))
-
+    # returns fft data
     process_lvm_to_csv(file_path, file_type, file_name)
     data_df = get_df(file_path, file_name)
 
     # Get fft magnitude data to pass through model
     fft_data = np.abs(np.fft.fft(data_df['voltage']))
-    print(np.shape(fft_data))
+    # fft_data = 20*np.log10(np.abs(np.fft.fft(data_df['voltage'])))
+    # fft_data = data_df['voltage']
+    # print(np.shape(fft_data))
 
-    characterize_dict = {"0": "SB", "1": "Down", "2": "Background Noise"}
-    prediction = loaded_model.predict([fft_data])
-    # print(prediction)
-    eval = characterize_dict[str(int(prediction))]
-    print("The data is {}".format(eval))
-
-
-    graph_voltage(data_df)
-    graph_fft(data_df)
+    return fft_data
 
 
 if __name__ == "__main__":
     # Add new .lvm file in path ./incoming_data/lvm
-    print("Make sure saved lvm file is stored within incoming_data/lvm/")
-    file_path = "./incoming_data"
+    # print("Make sure saved lvm file is stored within incoming_data/lvm/")
+    # file_paths = ["HighDown", "HighSpaceBar", "LowDown", "LowSpaceBar", "MovingDown", "MovingSpaceBar"]
+    # file_paths_names = ["HDown", "HSB", "LDown", "LSB", "MDown", "MSB"]
+
+    # Testing Sara's stuff
+    file_paths = ["Sara/DeepDown", "Sara/DeepSB", "Sara/Down", "Sara/SB"]
+    file_paths_names = ["DDown", "DSB", "Down", "SB"]
+    
+    # n = [15, 15, 15, 15, 15, 11]
+    # ys =[[1 for i in range(n[0])],
+    #      [0 for i in range(n[1])],
+    #      [1 for i in range(n[2])],
+    #      [0 for i in range(n[3])],
+    #      [1 for i in range(n[4])],
+    #      [0 for i in range(n[5])]]
+
+    # Testing Sara's stuff
+    n = [15, 15, 30, 30]
+    ys =[[1 for i in range(n[0])],
+         [0 for i in range(n[1])],
+         [1 for i in range(n[2])],
+         [0 for i in range(n[3])]]
+    # print(np.shape(ys))
+    
+    filename = "fourier_trained_model.sav"
+    loaded_model = pickle.load(open(filename, 'rb'))
+
     file_type = "lvm"
-    filename = input("Please input the filename as saved in the folder (no .lvm): ")
-    main(file_path, file_type, filename)
+    for i in range(len(file_paths)):
+        fft_data = []
+        for ii in range(1, n[i]+1):
+            file_path = "./TestingSets/" + file_paths[i]
+            filename = file_paths_names[i] + str(ii)
+            fft_data.append(main(file_path, file_type, filename))
+        # print(np.shape(fft_data))
+        print("\n")
+
+        print("Over {} test data: n={}".format(file_paths[i], len(fft_data)))
+        result = loaded_model.score(fft_data, ys[i])
+        print("Accuracy: {}".format(result))
+        c = sklearn.metrics.confusion_matrix(ys[i], loaded_model.predict(fft_data))
+        print(c)
+            
 
 
-    alternate code
+
+
+    
