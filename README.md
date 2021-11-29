@@ -30,7 +30,7 @@ through a Multilayer Perceptron classifier network. The signals will be classifi
 
 To use the project as intended, it is recommended that the signal is obtained via the Labview SignalAcq applet, found on the desktop of many Duke BME computers. The biopotential amplifier circuit should be attached with two electrodes, one slightly under the chin and the other on the upper throat under the first electrode. The ground lead should be connected to the bony section behind the right ear. 
 
-The signal is acquired with a sampling rate of 50,000 samples/second for 1.5 seconds. Click "Oneshot" and speak; the data will be recorded within a 1.5 second interval. This yields a total of 75,000 data points, which can be saved as a .lvm file.
+The signal is acquired with a sampling rate of 10,000 samples/second for 1.5 seconds. Click "Oneshot" and speak; the data will be recorded within a 1.5 second interval. This yields a total of 15,000 data points, which can be saved as a .lvm file.
 
 Download this git repository and save the .lvm file as a desired 'filename.lvm' in the ./incoming_data/lvm folder. Then proceed to implementation section.
 
