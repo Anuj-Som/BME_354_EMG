@@ -4,13 +4,15 @@ import matplotlib.pyplot as plt
 from sklearn.neural_network import MLPClassifier 
 import pickle
 
+dataType = "fourierdb"
+
 # Data processing & Wrangling to np arrays
-SB_train_data = "./master_data/SB_train.csv"
-SB_test_data = "./master_data/SB_test.csv"
-Down_train_data = "./master_data/Down_train.csv"
-Down_test_data = "./master_data/Down_test.csv"
-BN_train_data = "./master_data/BN_train.csv"
-BN_test_data = "./master_data/BN_test.csv"
+SB_train_data = "./master_data/SB_train_{}.csv".format(dataType)
+SB_test_data = "./master_data/SB_test_{}.csv".format(dataType)
+Down_train_data = "./master_data/Down_train_{}.csv".format(dataType)
+Down_test_data = "./master_data/Down_test_{}.csv".format(dataType)
+BN_train_data = "./master_data/BN_train_{}.csv".format(dataType)
+BN_test_data = "./master_data/BN_test_{}.csv".format(dataType)
 
 def process_data(dataframe, label):
     # Let Label "0" be "SB", "1" be "Down"

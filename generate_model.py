@@ -17,6 +17,6 @@ trained = clf.fit(train_X, train_y)
 print("Completed Training")
 print(trained)
 
-filename = "fourier_trained_model.sav"
+filename = "fourierdb_trained_model.sav"
 print("Saving to {}".format(filename))
 pickle.dump(clf, open(filename, 'wb'))
