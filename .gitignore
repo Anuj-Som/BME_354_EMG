@@ -1,2 +1,5 @@
 __pycache__
 /venv
+/training_data_csv
+/training_data_lvm
+/master_data
