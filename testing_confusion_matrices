@@ -3,10 +3,152 @@ Confusion matrices on testing data:
 1 = Down
 2 = Noise
 
+Model: fourier_trained_model.sav
+Over all data: n=575
+Accuracy: 0.9930434782608696
 Over test data: n=115
-Accuracy: 0.9304347826086956
-[[47  3  0]
- [ 1 49  0]
- [ 2  2 11]]
+Accuracy: 0.9652173913043478
+[[48  2  0]
+ [ 2 48  0]
+ [ 0  0 15]]
 
+Model: fourierdb_trained_model.sav
+Over all data: n=575
+Accuracy: 0.9773913043478261
+Over test data: n=115
+Accuracy: 0.8869565217391304
+[[47  3  0]
+ [ 7 42  1]
+ [ 0  2 13]]
+
+Model: voltage_trained_model.sav
+Over all data: n=575
+Accuracy: 0.8330434782608696
+Over test data: n=115
+Accuracy: 0.8
+[[43  7  0]
+ [ 1 48  1]
+ [ 7  7  1]]
+
+
+Special Tests (run on fourier):
+Over HighDown test data: n=15
+Accuracy: 0.06666666666666667
+[[ 0  0  0]
+ [ 2  1 12]
+ [ 0  0  0]]
+
+Over HighSpaceBar test data: n=15
+Accuracy: 0.2
+[[ 3  1 11]
+ [ 0  0  0]
+ [ 0  0  0]]
+
+Over LowDown test data: n=15
+Accuracy: 0.8
+[[ 0  0  0]
+ [ 2 12  1]
+ [ 0  0  0]]
+
+Over LowSpaceBar test data: n=15
+Accuracy: 0.6
+[[9 4 2]
+ [0 0 0]
+ [0 0 0]]
+
+Over MovingDown test data: n=15
+Accuracy: 0.6666666666666666
+[[ 0  0  0]
+ [ 3 10  2]
+ [ 0  0  0]]
+
+Over MovingSpaceBar test data: n=11
+Accuracy: 0.5454545454545454
+[[6 3 2]
+ [0 0 0]
+ [0 0 0]]
+
+Special Tests (run on fourierdb):
+Over HighDown test data: n=15
+Accuracy: 0.06666666666666667
+[[ 1 14]
+ [ 0  0]]
+
+
+Over HighSpaceBar test data: n=15
+Accuracy: 0.0
+[[ 0  2 13]
+ [ 0  0  0]
+ [ 0  0  0]]
+
+
+Over LowDown test data: n=15
+Accuracy: 0.0
+[[ 0 15]
+ [ 0  0]]
+
+
+Over LowSpaceBar test data: n=15
+Accuracy: 0.0
+[[ 0  5 10]
+ [ 0  0  0]
+ [ 0  0  0]]
+
+
+Over MovingDown test data: n=15
+Accuracy: 0.0
+[[ 0 15]
+ [ 0  0]]
+
+
+Over MovingSpaceBar test data: n=11
+Accuracy: 0.0
+[[ 0  1 10]
+ [ 0  0  0]
+ [ 0  0  0]]
+
+
+
+
+Special Tests (run on voltage):
+Over HighDown test data: n=15
+Accuracy: 0.8
+[[ 0  0]
+ [ 3 12]]
+
+
+Over HighSpaceBar test data: n=15
+Accuracy: 1.0
+[[15]]
+
+
+Over LowDown test data: n=15
+Accuracy: 0.4666666666666667
+[[0 0 0]
+ [7 7 1]
+ [0 0 0]]
+
+
+Over LowSpaceBar test data: n=15
+Accuracy: 0.6
+[[9 6]
+ [0 0]]
+
+
+Over MovingDown test data: n=15
+Accuracy: 0.8666666666666667
+[[ 0  0  0]
+ [ 1 13  1]
+ [ 0  0  0]]
+
+
+Over MovingSpaceBar test data: n=11
+Accuracy: 0.6363636363636364
+[[7 4]
+ [0 0]]
+
+
+
+
+Sara Special Tests
 
